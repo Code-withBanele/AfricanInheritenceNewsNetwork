@@ -42,7 +42,7 @@ export default function AboutPage() {
           <p className="text-[#6B6257] text-xs tracking-[0.16em] uppercase font-sans">Our purpose</p>
           <div className="max-w-3xl">
             <p className="text-[#1C1915] text-2xl md:text-[2rem] leading-[1.38] mb-12" style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}>
-              Africa Heritage News Network is an African media, history, heritage, ideas, and public-interest platform designed to connect journalism with memory, scholarship, and contemporary affairs.
+              African Heritage News Network is an African media, history, heritage, ideas, and public-interest platform designed to connect journalism with memory, scholarship, and contemporary affairs.
             </p>
             <div className="space-y-7 text-[#4A4540] text-lg leading-[1.8] font-sans">
               <p>We are building a publication that understands Africa not as a single story, but as many histories, communities, and futures. Our work is grounded in people, places, history, and perspectives that deserve serious attention and sustained public debate.</p>

@@ -33,4 +33,6 @@ export const router = createBrowserRouter([
       { path: "*", Component: NotFound },
     ],
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL,
+});

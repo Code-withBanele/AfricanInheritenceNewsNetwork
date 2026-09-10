@@ -2,7 +2,11 @@ export { seedArticles } from "@/imports/articles";
 export type { Article as ImportedArticle } from "@/imports/articles";
 import manonaPotrait from "../data/assets/Manona.png";
 import PeddieLandscape2 from "../data/assets/PeddieLandscape2.jpeg";
+import milkwod5 from "../data/assets/milkwood5.jpeg";
 import type { ContentBlock } from "@/types/article";
+import Maqoma from "../data/assets/image.png";
+import fortpeddie from "../data/assets/Fort Peddie4.jpg"
+import healdtown from "../data/assets/healdtown-mission-institute.png"
 
 const manonaArticleTwoBody: ContentBlock[] = `I. The Teacher
 
@@ -17,10 +21,7 @@ He taught. He did not rebel. He did not flee. He did what his father's ministry 
 
 The tension between these two definitions — education as service and education as control — would shape the next decade of his life. It would drive him, eventually, out of the classroom and into the studio.
 
-II. The Escape",
-{
-type:"image"
-value: PeddoeLandscape2},
+II. The Escape
 
 Professor Michael Whisson, in his tribute to Manona after his death in 2013, used a striking phrase. He wrote that Manona "escaped this fate by joining the SABC Xhosa radio service" (Whisson, 2013). The phrase is Whisson's, not Manona's, but it carries the weight of a life-altering decision. Bantu Education was a "fate." The SABC was an "escape." The language tells us something about how the choice was understood, from the inside, by those who lived it.
 
@@ -88,19 +89,53 @@ He was ready for the field. The Eastern Cape was waiting.
 
 SOURCE / FACT-CHECK NOTE
 
-Key points independently checked for this handover include Manona's 1960s SABC Xhosa-radio career, his 1973 UNISA anthropology degree, his 1975 entry into ISER, and the 2024 posthumous Sol Plaatje Translation Award for his translation of D.D.T. Jabavu's travelogue. See the accompanying research record for final publication citations and source links.`.split("\n\n").flatMap((block) =>
-  block === "II. The Escape"
-    ? [
-        block,
-        {
-          type: "image" as const,
-          value: PeddieLandscape2,
-          alt: "Peddie landscape in the Eastern Cape",
-          caption: "The Peddie landscape in the Eastern Cape, the historical world into which Wele Cecil Manona was born. Photograph: AHNN archive.",
-        },
-      ]
-    : [block]
-);
+Key points independently checked for this handover include Manona's 1960s SABC Xhosa-radio career, his 1973 UNISA anthropology degree, his 1975 entry into ISER, and the 2024 posthumous Sol Plaatje Translation Award for his translation of D.D.T. Jabavu's travelogue. See the accompanying research record for final publication citations and source links.`.split("\n\n");
+
+function withArticleOneImages(blocks: string[]): ContentBlock[] {
+  return blocks.flatMap((block) => {
+    const heading = block.trim().toLowerCase();
+    const imageByHeading: Record<string, ContentBlock> = {
+      "ii. peddie: frontier, settlement, and the moral geography of manona's birth": {
+        type: "image",
+        value: PeddieLandscape2,
+        alt: "Peddie landscape in the Eastern Cape",
+        caption: "The Peddie landscape in the Eastern Cape — the historical world into which Wele Cecil Manona was born in 1937.",
+      },
+      "the fort and the wars": {
+        type: "image",
+        value: fortpeddie,
+        alt: "Fort Peddie",
+        caption: "Fort Peddie, established during the frontier-war period and central to the military history of the district.",
+      },
+      "the xhosa presence and the resistance": {
+        type: "image",
+        value: Maqoma,
+        alt: "Chief Maqoma",
+        caption: "Chief Maqoma, one of the most prominent Xhosa leaders of the nineteenth-century frontier wars.",
+      },
+      "the milkwood tree: the oath and the education": {
+        type: "image",
+        value: milkwod5,
+        alt: "Historic milkwood tree near Peddie",
+        caption: "The historic milkwood tree associated with the 1835 Mfengu/Fingo Oath near Peddie.",
+      },
+      "the lived rural world: cattle, land, and self-sufficiency": {
+        type: "image",
+        value: fortpeddie,
+        alt: "Rural Peddie landscape with cattle",
+        caption: "The rural landscape of Peddie — cattle, commonage and land formed part of the social and economic world of Manona's childhood.",
+      },
+      "v. the threshold": {
+        type: "image",
+        value: healdtown,
+        alt: "Healdtown Mission Institution",
+        caption: "Healdtown Mission Institution, where Manona continued his education after his early schooling in Peddie.",
+      },
+    };
+    const image = imageByHeading[heading];
+    return image ? [block, image] : [block];
+  });
+}
 
 export interface Author {
   name: string;
@@ -175,7 +210,7 @@ export const articles: Article[] = [
     heroAlt: "Dr Wele Cecil Manona (1937–2013). Portrait",
     excerpt:
       "To understand Dr Wele Cecil Manona is to first understand Peddie — a district where frontier wars, missionary oaths, and the rhythms of rural life shaped the man who would spend four decades documenting what colonialism tried to erase.",
-    body: [
+    body: withArticleOneImages([
       "I. Premise",
       "Some lives can only be understood by first understanding the landscape that shaped them. To understand Dr. Wele Cecil Manona, we begin with Peddie — not as the subject of this essay in its own right, but as the world that formed his. It was there, in and around Durban Location, that the early textures of his life were laid down: the discipline of mission Christianity, the cadences of rural speech, the demands of observation, the moral seriousness of community life, and the longer pressures of land, labour and survival that marked so much of the Eastern Cape in the twentieth century.",
       "This essay is therefore not a history of Peddie for its own sake. Nor does it suggest that the district can explain Manona in any simple or deterministic way. Rather, it seeks to place existing bodies of scholarship into conversation — on Peddie, the Eastern Cape frontier, mission education, rural social change, and Manona's own later intellectual and humanitarian work — in order to ask a more precise question: what kind of Eastern Cape produced Wele Cecil Manona, and what remained of that world in the man he became?",
@@ -244,7 +279,7 @@ export const articles: Article[] = [
       "By the time he approached the end of his studies, South Africa itself was standing at a crossroads. The promise of the mission-school era was beginning to dim under the gathering shadow of Bantu Education. The space for independent black intellectual formation was narrowing. Teaching remained one of the few honourable paths open to a young black man of ability, and Manona, like many of his peers, entered it honourably.",
       "But history was already preparing to call him in another direction.",
       "The young man from Durban Location had learned how to observe, how to listen, and how to carry words carefully. The next stage of his life would ask him to do something more: to make that attentiveness public, and to find his voice in a country whose own future was becoming harder to name.",
-    ],
+    ]),
     seriesId: "manona-trilogy",
     seriesPosition: 1,
     relatedSlugs: ["a-young-man-finds-his-voice-trilogy", "manona-the-legacy"],
