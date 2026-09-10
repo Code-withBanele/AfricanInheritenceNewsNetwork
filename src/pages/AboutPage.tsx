@@ -15,7 +15,7 @@ const founders = [
     bio: [
       "Banele Mjayezi is a co-founder of AHNN and a digital media practitioner focused on building credible, contemporary platforms for African public discourse.",
       "His work brings together editorial integrity, digital storytelling, and accessible publishing systems that help important African histories and ideas reach wider audiences.",
-      "Banele is a software developer and digital builder with a growing focus on frontend technology, web design, and the relationship between creativity and technology. As the technical lead and developer behind The Daily Read, he turns editorial vision into a digital experience — from frontend architecture and interface to the way readers discover and interact with stories.",
+      "Banele is a software developer and digital builder with a growing focus on frontend technology, web design, and the relationship between creativity and technology. As the technical lead and developer behind African Inheritence News Network Platform, he turns editorial vision into a digital experience — from frontend architecture and interface to the way readers discover and interact with stories.",
     ],
   },
 ];
@@ -28,7 +28,7 @@ export default function AboutPage() {
           <p className="text-[#B85725] text-xs tracking-[0.2em] uppercase mb-6 font-sans">About AHNN</p>
           <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,.65fr)] gap-12 lg:gap-20 items-end">
             <h1 className="text-[#1C1915] text-5xl md:text-7xl leading-[0.98] tracking-[-0.035em]" style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}>
-              Africa Heritage<br />News Network
+              African Heritage<br />News Network
             </h1>
             <p className="text-[#4A4540] text-lg leading-relaxed pb-1 font-sans">
               Stories that move a continent.
