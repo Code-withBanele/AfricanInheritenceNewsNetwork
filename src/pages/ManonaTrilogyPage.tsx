@@ -56,7 +56,7 @@ export default function ManonaTrilogyPage() {
             <div key={article.id} className={i > 0 ? "border-t border-[#DDD8CE]" : ""}>
               <Link
                 to={`/manona-trilogy/${article.slug}`}
-                aria-label={`Read ${article.title}`}
+                aria-label={article.status === "coming-soon" ? `Article ${i + 1}, Coming Soon` : `Read ${article.title}`}
                 className="group relative z-10 grid cursor-pointer md:grid-cols-[80px_1fr_320px] gap-6 md:gap-10 items-center py-10 md:py-14"
               >
                 {/* Number */}
@@ -71,17 +71,23 @@ export default function ManonaTrilogyPage() {
 
                 {/* Text */}
                 <div>
-                  <p className="text-[#B85725] text-[10px] tracking-[0.15em] uppercase mb-3 font-sans">{article.category}</p>
+                  <p className="text-[#B85725] text-[10px] tracking-[0.15em] uppercase mb-3 font-sans">
+                    {article.status === "coming-soon" ? `Article ${i + 1}` : "Released"}
+                  </p>
                   <h2
                     className="text-[#1C1915] text-2xl md:text-3xl leading-tight mb-3 transition-[color,transform] duration-200 group-hover:text-[#B85725] group-hover:translate-y-[3px]"
                     style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}
                   >
                     {article.title}
                   </h2>
-                  <p className="text-[#4A4540] text-base leading-relaxed mb-4 font-sans max-w-xl">{article.subtitle}</p>
-                  <p className="text-[#9C9589] text-xs font-sans">
-                    {article.author.name} &mdash; {article.date} &mdash; {article.readTime}
+                  <p className="text-[#4A4540] text-base leading-relaxed mb-4 font-sans max-w-xl">
+                    {article.status === "coming-soon" ? "Coming Soon" : article.subtitle}
                   </p>
+                  {article.status === "released" && (
+                    <p className="text-[#9C9589] text-xs font-sans">
+                      {article.author.name} &mdash; {article.date} &mdash; {article.readTime}
+                    </p>
+                  )}
                 </div>
 
                 {/* Image */}

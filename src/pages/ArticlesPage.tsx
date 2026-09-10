@@ -70,7 +70,7 @@ export default function ArticlesPage() {
               {articles.map((article, i) => (
                 <div key={article.id} className={i > 0 ? "border-t border-[#DDD8CE]" : ""}>
                   <Link
-                    to={`/articles/${article.slug}`}
+                    to={`/manona-trilogy/${article.slug}`}
                     className="group grid md:grid-cols-[1fr_240px] gap-6 md:gap-10 items-center py-10"
                   >
                     <div>
@@ -81,10 +81,14 @@ export default function ArticlesPage() {
                       >
                         {article.title}
                       </h2>
-                      <p className="text-[#6B6257] text-sm leading-relaxed mb-4 font-sans max-w-xl">{article.subtitle}</p>
-                      <p className="text-[#9C9589] text-xs font-sans">
-                        {article.author.name} &mdash; {article.date} &mdash; {article.readTime}
+                      <p className="text-[#6B6257] text-sm leading-relaxed mb-4 font-sans max-w-xl">
+                        {article.status === "coming-soon" ? "Coming Soon" : article.subtitle}
                       </p>
+                      {article.status === "released" && (
+                        <p className="text-[#9C9589] text-xs font-sans">
+                          {article.author.name} &mdash; {article.date} &mdash; {article.readTime}
+                        </p>
+                      )}
                     </div>
                     <div className="hidden md:block overflow-hidden bg-[#DDD8CE]" style={{ aspectRatio: "4/3" }}>
                       <img

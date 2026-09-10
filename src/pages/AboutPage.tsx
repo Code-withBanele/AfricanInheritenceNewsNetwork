@@ -59,7 +59,7 @@ export default function AboutPage() {
             <p className="max-w-2xl text-3xl md:text-4xl leading-[1.18]" style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}>
               AHNN was founded to make African public life more visible, more accountable, and more intelligible.
             </p>
-          </div>
+          </div>-+--+-
 
           <div className="lg:ml-[280px] border-t border-[#3A3630]">
             {founders.map((founder) => (

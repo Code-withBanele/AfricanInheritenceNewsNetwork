@@ -7,6 +7,12 @@ import type { ContentBlock } from "@/types/article";
 import Maqoma from "../data/assets/image.png";
 import fortpeddie from "../data/assets/Fort Peddie4.jpg"
 import healdtown from "../data/assets/healdtown-mission-institute.png"
+import A31 from "../data/assets/A31.jpeg";
+import A32 from "../data/assets/A32.jpeg";
+import dora from '../data/assets/dora.jpeg';
+import a34 from '../data/assets/a34.jpeg';
+import A35 from "../data/assets/A35.jpeg";
+import { manonaArticle1 } from "@/imports/articles";
 
 const manonaArticleTwoBody: ContentBlock[] = `I. The Teacher
 
@@ -159,6 +165,7 @@ export interface Article {
   seriesPosition?: number;
   relatedSlugs?: string[];
   featured?: boolean;
+  status?: "released" | "coming-soon";
 }
 
 export interface Series {
@@ -192,7 +199,7 @@ export const series: Series[] = [
   },
 ];
 
-export const articles: Article[] = [
+const legacyArticles: Article[] = [
   {
     id: "manona-1",
     slug: "a-young-man-listens-trilogy",
@@ -210,7 +217,7 @@ export const articles: Article[] = [
     heroAlt: "Dr Wele Cecil Manona (1937–2013). Portrait",
     excerpt:
       "To understand Dr Wele Cecil Manona is to first understand Peddie — a district where frontier wars, missionary oaths, and the rhythms of rural life shaped the man who would spend four decades documenting what colonialism tried to erase.",
-    body: withArticleOneImages([
+    body: [
       "I. Premise",
       "Some lives can only be understood by first understanding the landscape that shaped them. To understand Dr. Wele Cecil Manona, we begin with Peddie — not as the subject of this essay in its own right, but as the world that formed his. It was there, in and around Durban Location, that the early textures of his life were laid down: the discipline of mission Christianity, the cadences of rural speech, the demands of observation, the moral seriousness of community life, and the longer pressures of land, labour and survival that marked so much of the Eastern Cape in the twentieth century.",
       "This essay is therefore not a history of Peddie for its own sake. Nor does it suggest that the district can explain Manona in any simple or deterministic way. Rather, it seeks to place existing bodies of scholarship into conversation — on Peddie, the Eastern Cape frontier, mission education, rural social change, and Manona's own later intellectual and humanitarian work — in order to ask a more precise question: what kind of Eastern Cape produced Wele Cecil Manona, and what remained of that world in the man he became?",
@@ -279,51 +286,50 @@ export const articles: Article[] = [
       "By the time he approached the end of his studies, South Africa itself was standing at a crossroads. The promise of the mission-school era was beginning to dim under the gathering shadow of Bantu Education. The space for independent black intellectual formation was narrowing. Teaching remained one of the few honourable paths open to a young black man of ability, and Manona, like many of his peers, entered it honourably.",
       "But history was already preparing to call him in another direction.",
       "The young man from Durban Location had learned how to observe, how to listen, and how to carry words carefully. The next stage of his life would ask him to do something more: to make that attentiveness public, and to find his voice in a country whose own future was becoming harder to name.",
-    ]),
+    ],
     seriesId: "manona-trilogy",
     seriesPosition: 1,
     relatedSlugs: ["a-young-man-finds-his-voice-trilogy", "manona-the-legacy"],
     featured: true,
+    status: "released",
   },
   {
     id: "manona-2",
     slug: "a-young-man-finds-his-voice-trilogy",
-    title: "A Young Man Finds His Voice",
-    subtitle: "Article 2 of the Manona Series",
-    category: "Heritage",
+    title: "Article 2",
+    subtitle: "Coming Soon",
+    category: "Manona Trilogy",
     author: {
       name: "Sipho Khumalo",
       bio: "Sipho Khumalo writes on African history and land politics. He is based in Cape Town.",
     },
-    date: "19 August 2025",
-    readTime: "18 min read",
+    date: "Coming soon",
+    readTime: "",
     heroImage: manonaPotrait,
     heroAlt: "Dr Wele Cecil Manona (1937–2013). Portrait",
-    excerpt:
-      "The teacher became the broadcaster, the broadcaster became the translator, and the translator became the anthropologist. Across every institution, Manona kept learning the same discipline: to listen carefully and carry what he heard with accuracy and care.",
-    body: manonaArticleTwoBody,
+    excerpt: "The second chapter of the Manona Trilogy has not yet been released.",
+    body: [],
     seriesId: "manona-trilogy",
     seriesPosition: 2,
     relatedSlugs: ["a-young-man-listens-trilogy", "manona-the-legacy"],
 
     featured: false,
+    status: "coming-soon",
   },
   {
     id: "manona-3",
     slug: "manona-the-legacy",
-    title: "A Young Man Returns",
-    subtitle:
-      "Article 3 of the Manona Series — The Final Article",
-    category: "Heritage",
+    title: "Article 3",
+    subtitle: "Coming Soon",
+    category: "Manona Trilogy",
     author: { name: "Zola Pinda", bio: "AHNN Editorial covers African heritage, history, geopolitics and more." },
-    date: "26 August 2025",
-    readTime: "30 min read",
+    date: "Coming soon",
+    readTime: "",
     heroImage:
       "https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=1400&h=800&fit=crop&auto=format",
     heroAlt: "Archival documents and photographs spread across a table",
-    excerpt:
-      "The man who herded cattle in Durban Location became the anthropologist of the forgotten. He walked the Eastern Cape village by village, carried food to the starving and evidence to the public record, and never forgot that the work begins in the field.",
-    body: [
+    excerpt: "The third chapter of the Manona Trilogy has not yet been released.",
+    body: [/*
       "I. The Fieldworker",
       "There is a particular kind of scholar who does not write from the study. He writes from the road, the location, the commonage, the factory floor, the resettlement camp — and only then returns to the desk. Wele Cecil Manona was that kind of scholar. For twenty-seven years, from 1975 to his retirement in 2002, he was a research officer at the Institute of Social and Economic Research (ISER) at Rhodes University, and in those years he walked the Eastern Cape more thoroughly than almost any anthropologist of his generation (Whisson, 2013a; Rhodes University, 2013b).",
       "His fieldwork was not occasional. It was continuous, cumulative, and physically demanding. He drove to pre-schools in the most deprived areas of the Ciskei. He evaluated labour relations at the Magwa Tea Estates on the Wild Coast. He ran a feeding scheme at Glenmore, the apartheid government's most notorious \"dumping ground.\" He studied land tenure in Melani village near Alice. He interviewed rough immigrant artisans at the Ford Motor Company plant in Port Elizabeth. He assisted civil rights journalists during the height of apartheid security force repression in the 1970s and 1980s. And barely a month before his death in October 2013, his last field trip was to the neglected cemeteries of Grahamstown East (Whisson, 2013a).",
@@ -388,12 +394,177 @@ export const articles: Article[] = [
       "Sullivan, L. (1977) The Sullivan Principles: Code of Conduct for U.S. Corporations Operating in South Africa. Philadelphia: Sullivan Foundation.",
       "Whisson, M. (2013a) 'Rhodes University bids farewell to a brave and generous spirited scholar', Rhodes University Latest News, October 2013. Available at: ru.ac.za.",
       "Wits University Press (2024) 'Media release: E-Indiya nase East Africa by DDT Jabavu, translated by Cecil Wele Manona', Wits University Press, 21 February. Available at: witspress.co.za.",
-    ],
+
+  
+
+      .split("\n\n").flatMap((block) => {
+
+  // ============================================================
+  // IMAGE 1 — DR WELE CECIL MANONA
+  // Place immediately after the opening introductory paragraph
+  // ============================================================
+  if (block === "A Young Man Returns") {
+    return [
+      block,
+      {
+        type: "image" as const,
+        value: A31,
+        alt: "Dr Wele Cecil Manona",
+        caption:
+          "tHE keiskama River Valley - Missioin ruina, cattle and villages of the original 1947 survey.",
+      },
+    ];
+  }
+
+  // ============================================================
+  // IMAGE 2 — HEALDTOWN
+  // Place after the paragraph beginning:
+  // "In 1960, Wele Cecil Manona entered the classroom..."
+  // ============================================================
+  if (
+    block.startsWith(
+      "In 1960, Wele Cecil Manona entered the classroom"
+    )
+  ) {
+    return [
+      block,
+      {
+        type: "image" as const,
+        value: A32,
+        alt: "Ariel view of Glenmoore April 1979",
+        caption:
+          "Ariel view of Glenmore april, 1979, Photograph by Ben Maclennan. Source Cory Library and Historical Archives, Rhodes University.",
+      },
+    ];
+  }
+
+  // ============================================================
+  // IMAGE 3 — SABC BROADCAST HOUSE
+  // Place after:
+  // "The SABC had been broadcasting in African languages since the 1940s."
+  // ============================================================
+  if (
+    block.startsWith(
+      "The SABC had been broadcasting in African languages since the 1940s."
+    )
+  ) {
+    return [
+      block,
+      {
+        type: "image" as const,
+        value: dora,
+        alt: "Ms Dora Mkhaliphi, Mother of seven shows her 10-day eviction notice . Photogragh taken by Ben Maclennan, 1979. Source Cory Library and Historical Archives, Rhodes University.",
+        caption:
+          "Broadcast House, Commissioner Street, Johannesburg. The SABC headquarters from which South Africa's radio services reached audiences across the country.",
+      },
+    ];
+  }
+
+  // ============================================================
+  // IMAGE 4 — D.D.T. JABAVU
+  // Place around the paragraph introducing Davidson Don Tengo Jabavu
+  // ============================================================
+  if (
+    block.startsWith(
+      "Davidson Don Tengo Jabavu"
+    )
+  ) {
+    return [
+      {
+        type: "image" as const,
+        value: ,
+        alt: "Davidson Don Tengo Jabavu",
+        caption:
+          "Davidson Don Tengo (D.D.T.) Jabavu. The Fort Hare intellectual whose 1949 journey to India and East Africa was later translated from isiXhosa into English by Cecil Wele Manona.",
+      },
+      block,
+    ];
+  }
+
+  // ============================================================
+  // IMAGE 5 — THE BOOK
+  // Place after the paragraph beginning:
+  // "The volume was published in 2020 by Wits University Press..."
+  // ============================================================
+  if (
+    block.startsWith(
+      "The volume was published in 2020 by Wits University Press"
+    )
+  ) {
+    return [
+      block,
+      {
+        type: "image" as const,
+        value: jabavuBook,
+        alt: "In India and East Africa / E-Indiya nase East Africa",
+        caption:
+          "In India and East Africa / E-Indiya nase East Africa. D.D.T. Jabavu's 1949 travelogue in isiXhosa and English, translated into English by Cecil Wele Manona and published by Wits University Press in 2020.",
+      },
+    ];
+  }
+
+  // ============================================================
+  // IMAGE 6 — ISER / RHODES
+  // Place after:
+  // "In 1975, Manona joined the ISER as a research assistant..."
+  // ============================================================
+  if (
+    block.startsWith(
+      "In 1975, Manona joined the ISER as a research assistant"
+    )
+  ) {
+    return [
+      block,
+      {
+        type: "image" as const,
+        value: iser,
+        alt: "Institute for Social and Economic Research, Rhodes University",
+        caption:
+          "The Institute for Social and Economic Research, Rhodes University. In 1975, Manona entered the institution where broadcasting gave way to sustained field research and anthropology.",
+      },
+    ];
+  }
+
+  // ============================================================
+  // ALL OTHER CONTENT
+  // ============================================================
+  return [block];
+});
+    */],
     seriesId: "manona-trilogy",
     seriesPosition: 3,
     relatedSlugs: ["manona-the-scholar", "a-young-man-finds-his-voice-trilogy"],
     featured: false,
+    status: "coming-soon",
   },
+];
+
+const attachedArticleOne: Article = {
+  id: "manona-1",
+  slug: "a-young-man-listens-trilogy",
+  title: manonaArticle1.title,
+  subtitle: "Article 1 of the Manona Series",
+  category: manonaArticle1.category,
+  author: {
+    name: manonaArticle1.author,
+    bio: "AHNN Editorial covers African heritage, history, geopolitics and more.",
+  },
+  date: "12 August 2025",
+  readTime: manonaArticle1.readingTime,
+  heroImage: manonaArticle1.image,
+  heroAlt: "The Peddie landscape in the Eastern Cape",
+  excerpt: manonaArticle1.excerpt,
+  body: manonaArticle1.content,
+  seriesId: "manona-trilogy",
+  seriesPosition: 1,
+  relatedSlugs: ["a-young-man-finds-his-voice-trilogy", "manona-the-legacy"],
+  featured: true,
+  status: "released",
+};
+
+export const articles: Article[] = [
+  attachedArticleOne,
+  ...legacyArticles.filter((article) => article.id !== "manona-1"),
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {

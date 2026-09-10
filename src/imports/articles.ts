@@ -1,6 +1,8 @@
 import type { Article } from '../types/article';
 export type { Article } from '../types/article';
 import { importedArticles } from './importedArticles';
+import coverA1 from '../data/assets/coverA1.jpeg';
+import behindMediaCover from '../data/assets/Behind Media curtain cover.png';
 
 // Image assets — swap for local imports once files are added to src/assets/
 const ennife = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&h=800&fit=crop&auto=format";
@@ -37,11 +39,11 @@ export const manonaArticle1: Article = {
   title: "A Young Man Listens",
   excerpt: "To understand Dr Wele Cecil Manona is to first understand Peddie — a district where frontier wars, missionary oaths, and the rhythms of rural life shaped the man who would spend four decades documenting what colonialism tried to erase.",
   category: "Heritage",
-  author: "AHNN Editorial",
+  author: "Zola Pinda",
   publishedAt: "2025-08-12",
   readingTime: "22 min read",
   featured: false,
-  image: PEDDIE_LANDSCAPE,
+  image: coverA1,
   content: [
     { type: "heading2", value: "I. Premise" },
     { type: "paragraph", content: "Some lives can only be understood by first understanding the landscape that shaped them. To understand Dr. Wele Cecil Manona, we begin with Peddie — not as the subject of this essay in its own right, but as the world that formed his. It was there, in and around Durban Location, that the early textures of his life were laid down: the discipline of mission Christianity, the cadences of rural speech, the demands of observation, the moral seriousness of community life, and the longer pressures of land, labour and survival that marked so much of the Eastern Cape in the twentieth century." },
@@ -1226,7 +1228,7 @@ export const seedArticles: Article[] = [
     publishedAt: "2026-09-04",
     readingTime: "12 min read",
     featured: true,
-    image: hero9,
+    image: behindMediaCover,
     content: [
       {
         type: "heading2",

@@ -94,7 +94,9 @@ export default function Home() {
                     <h4 className="text-[#F7F4EE] text-sm font-sans font-medium leading-snug transition-[color,transform] duration-200 group-hover/item:text-[#B85725] group-hover/item:translate-y-[3px]">
                       {article.title}
                     </h4>
-                    <p className="text-white/40 text-xs mt-0.5 font-sans">{article.readTime}</p>
+                    <p className="text-white/40 text-xs mt-0.5 font-sans">
+                      {article.status === "coming-soon" ? "Coming Soon" : "Released · Read Now"}
+                    </p>
                   </div>
                 </Link>
               ))}

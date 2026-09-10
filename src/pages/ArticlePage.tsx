@@ -151,52 +151,7 @@ function LegacyArticlePage({ slug }: { slug: string }) {
           >
             {article.excerpt}
           </p>
-          <div className="flex flex-col gap-6">
-            {article.body.map((para, i) => {
-              if (typeof para !== "string" && para.type === "image") {
-                return (
-                  <figure key={i} className="my-4">
-                    <div className="overflow-hidden bg-[#DDD8CE]">
-                      <img
-                        src={para.value}
-                        alt={para.alt || ""}
-                        loading="lazy"
-                        className="w-full object-cover"
-                      />
-                    </div>
-                    {para.caption && (
-                      <figcaption className="text-[#9C9589] text-xs mt-2 font-sans leading-relaxed">
-                        {para.caption}
-                      </figcaption>
-                    )}
-                  </figure>
-                );
-              }
-
-              if (typeof para !== "string") return null;
-
-              if (i === 2 && article.body.length > 4) {
-                return (
-                  <div key={i} className="my-6">
-                    <blockquote
-                      className="text-2xl md:text-3xl leading-snug text-[#1C1915] border-t border-b border-[#DDD8CE] py-8 my-4"
-                      style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontStyle: "italic" }}
-                    >
-                      &ldquo;{para.slice(0, 120)}&hellip;&rdquo;
-                    </blockquote>
-                    <p className="text-[#1C1915] text-lg leading-[1.85] font-sans">{para}</p>
-                  </div>
-                );
-              }
-              return <p key={i} className="text-[#1C1915] text-lg leading-[1.85] font-sans">{para}</p>;
-            })}
-          </div>
-          <div className="mt-14 pt-8 border-t border-[#DDD8CE]">
-            <p className="text-[#6B6257] text-xs tracking-[0.15em] uppercase mb-3 font-sans">About the Author</p>
-            <p className="text-base text-[#4A4540] leading-relaxed font-sans">
-              <strong className="font-medium text-[#1C1915]">{article.author.name}</strong> — {article.author.bio}
-            </p>
-          </div>
+          <ArticleContent blocks={article.body} />
         </div>
       </div>
 
@@ -213,7 +168,9 @@ function LegacyArticlePage({ slug }: { slug: string }) {
                   <h3 className={`text-lg leading-snug mb-2 transition-[color,transform] duration-200 ${sa.slug === article.slug ? "text-[#B85725]" : "group-hover:text-[#B85725] group-hover:translate-y-[3px]"}`}
                     style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}
                   >{sa.title}</h3>
-                  <p className="text-[#9C9589] text-xs font-sans">{sa.readTime}</p>
+                  <p className="text-[#9C9589] text-xs font-sans">
+                    {sa.status === "coming-soon" ? "Coming Soon" : "Released · Read Now"}
+                  </p>
                 </Link>
               ))}
             </div>
@@ -252,10 +209,44 @@ function NotFoundInline() {
   );
 }
 
+function ComingSoonPage({ articleNumber }: { articleNumber: number }) {
+  return (
+    <article className="bg-[#F7F4EE] min-h-[70vh] flex items-center">
+      <div className="max-w-[1440px] mx-auto w-full px-6 md:px-12 lg:px-20 py-24 md:py-32">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-[#B85725] text-xs tracking-[0.2em] uppercase mb-5 font-sans">
+            Manona Trilogy · Article {articleNumber}
+          </p>
+          <h1
+            className="text-5xl md:text-7xl leading-tight mb-6"
+            style={{ fontFamily: '"DM Serif Display", Georgia, serif' }}
+          >
+            Coming Soon
+          </h1>
+          <p className="text-[#6B6257] text-lg md:text-xl leading-relaxed mb-10 font-sans">
+            Chapter {articleNumber} of the Manona Trilogy has not yet been released.
+          </p>
+          <Link
+            to="/manona-trilogy"
+            className="inline-flex items-center gap-2 text-sm text-[#1C1915] border border-[#1C1915] px-5 py-3 hover:bg-[#1C1915] hover:text-[#F7F4EE] transition-colors duration-200 font-sans"
+          >
+            Return to the Trilogy
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { pathname } = useLocation();
   if (!slug) return <NotFoundInline />;
+
+  const trilogyArticle = getArticleBySlug(slug);
+  if (trilogyArticle?.status === "coming-soon") {
+    return <ComingSoonPage articleNumber={trilogyArticle.seriesPosition ?? 2} />;
+  }
 
   // Trilogy articles use their own URL namespace, avoiding collisions with
   // imported archive articles that may share a slug.
