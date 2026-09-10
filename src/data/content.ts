@@ -9,7 +9,7 @@ import fortpeddie from "../data/assets/Fort Peddie4.jpg"
 import healdtown from "../data/assets/healdtown-mission-institute.png"
 import A31 from "../data/assets/A31.jpeg";
 import A32 from "../data/assets/A32.jpeg";
-import dora from '../data/assets/dora.jpeg';
+import dora from '../data/assets/dora-mkhaliphi-eviction-notice.png';
 import a34 from '../data/assets/a34.jpeg';
 import A35 from "../data/assets/A35.jpeg";
 import { manonaArticle1 } from "@/imports/articles";
